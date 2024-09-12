@@ -1,6 +1,4 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
+<html lang="en"><head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>GigConnect - Gig Worker Support Platform</title>
@@ -18,7 +16,7 @@
                 <li><a href="#about">About Us</a></li>
                 <li><a href="#features">Features</a></li>
                 <li><a href="#how-it-works">How It Works</a></li>
-                <li><a href="#contact">Contact Us</a></li>
+                <li><a href="contact.html">Contact Us</a></li>
                 <li><a href="register.html" class="btn">Sign Up</a></li>
             </ul>
         </nav>
@@ -37,11 +35,20 @@
     </section>
 
     <!-- About Section -->
-    <section id="about">
-        <div class="about-content">
-            <h3>About GigConnect</h3>
-            <p>Our platform is designed to bridge the gap between gig workers and local industries in Bundelkhand. By analyzing resumes and recommending skill improvements, we aim to enhance employment opportunities for workers and support businesses with the right talent.</p>
-        </div>
+       <section id="about">
+            <div class="about-content">
+                <h3>About GigConnect</h3>
+                <p>At <strong>GigConnect</strong>, we are dedicated to transforming the way gig workers connect with local industries in <strong>Bundelkhand</strong>. Our mission is to provide a platform where workers can discover job opportunities, enhance their skills, and create a sustainable career path. Whether you're a seasoned gig worker or just starting, we empower you with tools to succeed in a competitive market.</p>
+                <p>We bridge the gap between workers and employers by offering:</p>
+                <ul style="list-style: none;">
+                    <li>AI-driven resume analysis to identify your strengths.</li>
+                    <li>Personalized skill recommendations for upskilling and growth.</li>
+                    <li>Local job opportunities matched to your skills and experience.</li>
+                    <li>Real-time job alerts to help you stay updated.</li>
+                </ul>
+                <p>Our platform is built to nurture talent, foster growth, and support the gig economy in Bundelkhand.</p>
+            </div>
+
     </section>
 
     <!-- Features Section -->
@@ -101,12 +108,48 @@
             </ul>
         </div>
         <div class="footer-bottom">
-            <p>&copy; 2024 GigConnect. All rights reserved.</p>
+            <p>© 2024 GigConnect. All rights reserved.</p>
         </div>
     </footer>
 
-</body>
-</html>
+<!-- Code injected by live-server -->
+<script>
+	// <![CDATA[  <-- For SVG support
+	if ('WebSocket' in window) {
+		(function () {
+			function refreshCSS() {
+				var sheets = [].slice.call(document.getElementsByTagName("link"));
+				var head = document.getElementsByTagName("head")[0];
+				for (var i = 0; i < sheets.length; ++i) {
+					var elem = sheets[i];
+					var parent = elem.parentElement || head;
+					parent.removeChild(elem);
+					var rel = elem.rel;
+					if (elem.href && typeof rel != "string" || rel.length == 0 || rel.toLowerCase() == "stylesheet") {
+						var url = elem.href.replace(/(&|\?)_cacheOverride=\d+/, '');
+						elem.href = url + (url.indexOf('?') >= 0 ? '&' : '?') + '_cacheOverride=' + (new Date().valueOf());
+					}
+					parent.appendChild(elem);
+				}
+			}
+			var protocol = window.location.protocol === 'http:' ? 'ws://' : 'wss://';
+			var address = protocol + window.location.host + window.location.pathname + '/ws';
+			var socket = new WebSocket(address);
+			socket.onmessage = function (msg) {
+				if (msg.data == 'reload') window.location.reload();
+				else if (msg.data == 'refreshcss') refreshCSS();
+			};
+			if (sessionStorage && !sessionStorage.getItem('IsThisFirstTime_Log_From_LiveServer')) {
+				console.log('Live reload enabled.');
+				sessionStorage.setItem('IsThisFirstTime_Log_From_LiveServer', true);
+			}
+		})();
+	}
+	else {
+		console.error('Upgrade your browser. This Browser is NOT supported WebSocket for Live-Reloading.');
+	}
+	// ]]>
+</script>
 
 
 
@@ -123,113 +166,5 @@
 
 
 
-<!-- hindi version -->
-<!-- <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>GigConnect - Gig Worker Support Platform</title>
-    <link rel="stylesheet" href="style.css">
-</head>
-<body>
 
-    <!-- Navigation Bar -->
-    <header>
-        <nav>
-            <div class="logo">
-                <h1>GigConnect</h1>
-            </div>
-            <ul>
-                <li><a href="#about">हमरे बारे में</a></li>
-                <li><a href="#features">विशेषताएं</a></li>
-                <li><a href="#how-it-works">कैसे काम करता है</a></li>
-                <li><a href="#contact">संपर्क करें</a></li>
-                <li><a href="register.html" class="btn">साइन अप करें</a></li>
-            </ul>
-        </nav>
-    </header>
-
-    <!-- Hero Section -->
-    <section id="hero">
-        <div class="hero-text">
-            <h2>बुन्देलखण्ड में गिग वर्कर्स को समर्थ बनाना</h2>
-            <p>स्थानीय नौकरी के अवसर खोजें, अपनी क्षमताएं सुधारें और हमारी AI-पावर्ड प्लेटफॉर्म के जरिए उद्योगों से जुड़ें।</p>
-            <a href="register.html" class="btn">अभी शामिल हों</a>
-        </div>
-        <div class="hero-image">
-            <img src="images/mason.avif" alt="Gig Workers Image">
-        </div>
-    </section>
-
-    <!-- About Section -->
-    <section id="about">
-        <div class="about-content">
-            <h3>GigConnect के बारे में</h3>
-            <p>हमरी प्लेटफॉर्म गिग वर्कर्स और स्थानीय उद्योगों के बीच का फासला मिटाने के लिए डिज़ाइन की गई है। रिज़्यूमे का विश्लेषण करके और कौशल सुधार की सिफारिश करके, हम कामकाजी अवसरों को बढ़ाना और व्यवसायों को सही प्रतिभा के साथ समर्थन करना चाहते हैं।</p>
-        </div>
-    </section>
-
-    <!-- Features Section -->
-    <section id="features">
-        <h3>GigConnect की विशेषताएं</h3>
-        <div class="features-grid">
-            <div class="feature-box">
-                <h4>रिज़्यूमे विश्लेषण</h4>
-                <p>हम आपके रिज़्यूमे का विश्लेषण करते हैं और AI और NLP तकनीकों का उपयोग करके महत्वपूर्ण कौशल और सुधार के क्षेत्र पहचानते हैं।</p>
-            </div>
-            <div class="feature-box">
-                <h4>व्यक्तिगत कौशल सिफारिशें</h4>
-                <p>आपके अनुभव और स्थानीय उद्योगों की मांग के आधार पर उपयुक्त प्रशिक्षण की सिफारिशें प्राप्त करें।</p>
-            </div>
-            <div class="feature-box">
-                <h4>नौकरी मिलान</h4>
-                <p>आपके कौशल और अनुभव के अनुसार नौकरी के अवसरों से मेल खाएं और स्थानीय नियोक्ताओं से सीधे संपर्क करें।</p>
-            </div>
-            <div class="feature-box">
-                <h4>नौकरी अलर्ट</h4>
-                <p>ईमेल या SMS अलर्ट के जरिए नौकरी के नए अवसरों से अपडेट रहें, जिससे आप कभी भी अवसरों से चूक न जाएं।</p>
-            </div>
-        </div>
-    </section>
-
-    <!-- How It Works Section -->
-    <section id="how-it-works">
-        <h3>कैसे काम करता है</h3>
-        <div class="how-it-works-content">
-            <div class="step">
-                <h4>1. रजिस्टर करें</h4>
-                <p>प्लेटफॉर्म पर साइन अप करें और अपना प्रोफ़ाइल बनाएं। अपना रिज़्यूमे और नौकरी की प्राथमिकताएं अपलोड करें।</p>
-            </div>
-            <div class="step">
-                <h4>2. कौशल की जानकारी प्राप्त करें</h4>
-                <p>हमारा AI आपके कौशल का विश्लेषण करता है और आपकी नौकरी की संभावनाओं को सुधारने के लिए प्रासंगिक प्रशिक्षण की सिफारिश करता है।</p>
-            </div>
-            <div class="step">
-                <h4>3. नौकरी के साथ मेल खाएं</h4>
-                <p>हम आपके प्रोफ़ाइल को स्थानीय उद्योगों की नौकरी की सूचियों से मिलाते हैं, और आपको नए अवसरों की सूचनाएं भेजते हैं।</p>
-            </div>
-            <div class="step">
-                <h4>4. नौकरी प्राप्त करें</h4>
-                <p>ऐसी नौकरियों के लिए आवेदन करें जो आपके कौशल से मेल खाती हैं और स्थानीय व्यवसायों द्वारा हायर किए जाएं।</p>
-            </div>
-        </div>
-    </section>
-
-    <!-- Footer -->
-    <footer id="contact">
-        <div class="footer-content">
-            <h4>संपर्क करें</h4>
-            <p>यदि आपके कोई सवाल हैं या आपको समर्थन की आवश्यकता है, तो बेझिझक संपर्क करें।</p>
-            <ul>
-                <li>ईमेल: support@gigconnect.com</li>
-                <li>फोन: +91-123-456-7890</li>
-            </ul>
-        </div>
-        <div class="footer-bottom">
-            <p>&copy; 2024 GigConnect. सर्वाधिकार सुरक्षित।</p>
-        </div>
-    </footer>
-
-</body>
-</html> -->
+</body></html>
