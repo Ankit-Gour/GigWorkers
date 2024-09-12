@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gig Worker Registration - GigConnect</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- Navigation Bar -->
+    <header>
+        <nav>
+            <div class="logo">
+                <h1>GigConnect</h1>
+            </div>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="#about">About Us</a></li>
+                <li><a href="#features">Features</a></li>
+                <li><a href="#how-it-works">How It Works</a></li>
+                <li><a href="#contact">Contact Us</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Registration Form -->
+    <section id="registration">
+        <div class="form-container">
+            <h2>Gig Worker Registration</h2>
+            <p>Please fill out the form below to register as a gig worker.</p>
+
+            <form action="register.php" method="post">
+                <label for="name">Full Name:</label>
+                <input type="text" id="name" name="name" required>
+
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email" required>
+
+                <label for="phone">Phone:</label>
+                <input type="tel" id="phone" name="phone" required>
+
+                <label for="location">Location:</label>
+                <input type="text" id="location" name="location" required>
+
+                <label for="work-preference">Work Preference:</label>
+                <input type="text" id="work-preference" name="work_preference" required>
+
+                <label for="skills">Current Skills:</label>
+                <textarea id="skills" name="skills" rows="4" required></textarea>
+
+                <label for="password">Password:</label>
+                <input type="password" id="password" name="password" required>
+
+                <input type="submit" value="Register">
+            </form>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <h4>Contact Us</h4>
+            <p>If you have any questions or need support, feel free to reach out.</p>
+            <ul>
+                <li>Email: support@gigconnect.com</li>
+                <li>Phone: +91-123-456-7890</li>
+            </ul>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2024 GigConnect. All rights reserved.</p>
+        </div>
+    </footer>
+
+</body>
+</html>
