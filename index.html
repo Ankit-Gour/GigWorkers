@@ -6,6 +6,280 @@
     <title>GigConnect - Gig Worker Support Platform</title>
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        /* Base Styles */
+        :root {
+            --primary-color: #003366;
+            --secondary-color: #ffcc00;
+            --text-color: white;
+            --bg-overlay: rgba(0, 0, 0, 0.5);
+        }
+
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            background-color: #f4f4f4;
+        }
+
+        /* Mobile First - Navigation */
+        header {
+            background-color: var(--primary-color);
+            padding: 1rem;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        nav .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: var(--secondary-color);
+        }
+
+        nav ul {
+            display: none;
+        }
+
+        .hamburger {
+            font-size: 1.5rem;
+            color: var(--secondary-color);
+            cursor: pointer;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 1.5rem;
+            list-style: none;
+            align-items: center;
+        }
+
+        .nav-links a {
+            color: var(--text-color);
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        /* Hero Section */
+        #hero {
+            position: relative;
+            width: 100%;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+        }
+
+        .hero-carousel {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            transition: transform 0.5s ease-in-out;
+        }
+
+        .hero-slide {
+            min-width: 100%;
+            height: 100%;
+            position: relative;
+        }
+
+        .hero-slide img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .hero-text {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            color: var(--text-color);
+            text-align: center;
+            z-index: 10;
+            background: var(--bg-overlay);
+            padding: 1rem;
+            border-radius: 5px;
+        }
+
+        .hero-text h2 {
+            font-size: 2rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .hero-text p {
+            font-size: 1.2rem;
+            margin-bottom: 1rem;
+        }
+
+        .hero-text .btn {
+            background-color: var(--secondary-color);
+            color: var(--primary-color);
+            padding: 0.5rem 1.5rem;
+            border-radius: 5px;
+            font-weight: bold;
+            text-decoration: none;
+        }
+
+        /* Carousel Controls */
+        .carousel-controls {
+            position: absolute;
+            top: 50%;
+            left: 0;
+            right: 0;
+            display: flex;
+            justify-content: space-between;
+            transform: translateY(-50%);
+            z-index: 10;
+        }
+
+        .carousel-controls i {
+            font-size: 1.5rem;
+            background-color: var(--bg-overlay);
+            color: var(--text-color);
+            padding: 0.5rem;
+            cursor: pointer;
+            border-radius: 50%;
+        }
+
+        /* Carousel Indicators */
+        .carousel-indicators {
+            position: absolute;
+            bottom: 10px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 0.5rem;
+            z-index: 10;
+        }
+
+        .carousel-indicators span {
+            width: 8px;
+            height: 8px;
+            background-color: rgba(255, 255, 255, 0.5);
+            border-radius: 50%;
+            cursor: pointer;
+        }
+
+        .carousel-indicators .active {
+            background-color: var(--secondary-color);
+        }
+
+        /* About Section */
+        #about {
+            padding: 2rem 1rem;
+            background-color: #fff;
+        }
+
+        #about h3 {
+            text-align: center;
+            font-size: 1.8rem;
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+        }
+
+        #about p {
+            text-align: center;
+            margin-bottom: 1rem;
+        }
+
+        #about ul {
+            list-style: none;
+            padding-left: 0;
+            text-align: center;
+        }
+
+        /* Features Section */
+        #features {
+            background-color: #f0f0f0;
+            padding: 2rem 1rem;
+        }
+
+        #features h3 {
+            text-align: center;
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 1rem;
+        }
+
+        .feature-box {
+            background-color: white;
+            padding: 1.5rem;
+            border-radius: 5px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--primary-color);
+            color: var(--text-color);
+            padding: 1.5rem 1rem;
+        }
+
+        footer .footer-content {
+            text-align: center;
+        }
+
+        footer ul {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        footer ul li {
+            margin-bottom: 0.5rem;
+        }
+
+        /* Tablet and Larger Screens */
+        @media (min-width: 768px) {
+            nav ul {
+                display: flex;
+                gap: 1rem;
+                list-style: none;
+                margin-left: auto;
+            }
+
+            .hamburger {
+                display: none;
+            }
+
+            #features .features-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (min-width: 1024px) {
+            #hero {
+                height: 80vh;
+            }
+
+            .hero-text h2 {
+                font-size: 3rem;
+            }
+
+            .hero-text p {
+                font-size: 1.5rem;
+            }
+
+            #features .features-grid {
+                grid-template-columns: repeat(4, 1fr);
+            }
+        }
+    </style>
 </head>
 <body>
 
@@ -13,7 +287,7 @@
     <header>
         <nav>
             <div class="logo">
-                <h1><i class=""></i> GigConnect</h1>
+                <h1>GigConnect</h1>
             </div>
             <!-- Hamburger icon -->
             <div class="hamburger" id="hamburger">
@@ -29,162 +303,133 @@
             </ul>
         </nav>
     </header>
-    <!-- Hero Section -->
+
+    <!-- Hero Section (Carousel) -->
     <section id="hero">
-        <div class="hero-text">
-            <h2>Empowering Gig Workers in बुन्देलखण्ड </h2>
-            <p>Find local job opportunities, improve your skills, and connect with industries through our AI-powered platform.</p>
-            <a href="register.html" class="btn">Join Now</a>
+        <div class="hero-carousel" id="hero-carousel">
+            <div class="hero-slide">
+                <img src="images/i1.jpg" alt="Gig Workers Image">
+                <div class="hero-text">
+                    <h2>Empowering Gig Workers in बुन्देलखण्ड</h2>
+                    <p>Find local job opportunities, improve your skills, and connect with industries through our AI-powered platform.</p>
+                    <a href="register.html" class="btn">Join Now</a>
+                </div>
+            </div>
+            <div class="hero-slide">
+                <img src="images/i2.jpg" alt="Another Gig Workers Image">
+                <div class="hero-text">
+                    <h2>Upskill for Better Opportunities</h2>
+                    <p>Take advantage of our skill recommendations and get hired for high-demand jobs.</p>
+                    <a href="register.html" class="btn">Join Now</a>
+                </div>
+            </div>
+            <div class="hero-slide">
+                <img src="images/i3.jpg" alt="Another Gig Workers Image">
+                <div class="hero-text">
+                    <h2>Connecting You with the Right Industry</h2>
+                    <p>Find the best match for your skills and get job alerts right to your inbox.</p>
+                    <a href="register.html" class="btn">Join Now</a>
+                </div>
+            </div>
         </div>
-        <div class="hero-image">
-            <img src="images/mason.avif" alt="Gig Workers Image">
+        <!-- Carousel Controls -->
+        <div class="carousel-controls">
+            <i class="fas fa-chevron-left" id="prev"></i>
+            <i class="fas fa-chevron-right" id="next"></i>
+        </div>
+        <!-- Carousel Indicators -->
+        <div class="carousel-indicators" id="carousel-indicators">
+            <span class="active" data-slide="0"></span>
+            <span data-slide="1"></span>
+            <span data-slide="2"></span>
         </div>
     </section>
 
     <!-- About Section -->
-       <section id="about">
-            <div class="about-content">
-                <h3>About GigConnect</h3>
-                <p>At <strong>GigConnect</strong>, we are dedicated to transforming the way gig workers connect with local industries in <strong>Bundelkhand</strong>. Our mission is to provide a platform where workers can discover job opportunities, enhance their skills, and create a sustainable career path. Whether you're a seasoned gig worker or just starting, we empower you with tools to succeed in a competitive market.</p>
-                <p>We bridge the gap between workers and employers by offering:</p>
-                <ul style="list-style: none;">
-                    <li>AI-driven resume analysis to identify your strengths.</li>
-                    <li>Personalized skill recommendations for upskilling and growth.</li>
-                    <li>Local job opportunities matched to your skills and experience.</li>
-                    <li>Real-time job alerts to help you stay updated.</li>
-                </ul>
-                <p>Our platform is built to nurture talent, foster growth, and support the gig economy in Bundelkhand.</p>
-            </div>
-
+    <section id="about">
+        <h3>About GigConnect</h3>
+        <p>GigConnect is an AI-powered platform designed to support gig workers in बुन्देलखण्ड. We connect small gig workers like artisans, construction laborers, and many others with job opportunities, help them develop new skills, and provide industry connections.</p>
     </section>
 
     <!-- Features Section -->
     <section id="features">
-       <a href="dashboard.php"> <h3>Features of GigConnect</h3></a>
+        <h3>Platform Features</h3>
         <div class="features-grid">
             <div class="feature-box">
-                <h4>Resume Analysis</h4>
-                <p>We analyze your resume and identify key skills and areas for improvement using AI and NLP technologies.</p>
-            </div>
-            <div class="feature-box">
-                <h4>Personalized Skill Recommendations</h4>
-                <p>Receive tailored upskilling recommendations based on your experience and the demands of local industries.</p>
-            </div>
-            <div class="feature-box">
+                <i class="fas fa-tools fa-2x"></i>
                 <h4>Job Matching</h4>
-                <p>Get matched with job opportunities that suit your skills and experience, and connect directly with local employers.</p>
+                <p>Find jobs based on your skills and location.</p>
             </div>
             <div class="feature-box">
-                <h4>Job Alerts</h4>
-                <p>Stay updated with job openings via email or SMS alerts, ensuring you never miss out on opportunities.</p>
+                <i class="fas fa-chart-line fa-2x"></i>
+                <h4>Skill Development</h4>
+                <p>Get recommendations for new skills to increase job opportunities.</p>
             </div>
-        </div>
-    </section>
-
-    <!-- How It Works Section -->
-    <section id="how-it-works">
-        <h3>How It Works</h3>
-        <div class="how-it-works-content">
-            <div class="step">
-                <h4>1. Register</h4>
-                <p>Sign up on the platform and create your profile. Upload your resume and job preferences.</p>
+            <div class="feature-box">
+                <i class="fas fa-envelope fa-2x"></i>
+                <h4>Alerts & Notifications</h4>
+                <p>Receive instant job alerts in your inbox.</p>
             </div>
-            <div class="step">
-                <h4>2. Get Skill Insights</h4>
-                <p>Our AI analyzes your skills and suggests relevant training to improve your job prospects.</p>
-            </div>
-            <div class="step">
-                <h4>3. Match with Jobs</h4>
-                <p>We match your profile with local industry job listings, and send you notifications of new opportunities.</p>
-            </div>
-            <div class="step">
-                <h4>4. Get Hired</h4>
-                <p>Apply for jobs that suit your skills and get hired by local businesses in need of your expertise.</p>
+            <div class="feature-box">
+                <i class="fas fa-users fa-2x"></i>
+                <h4>Community Support</h4>
+                <p>Connect with other gig workers and share opportunities.</p>
             </div>
         </div>
     </section>
 
     <!-- Footer -->
-    <footer id="contact">
+    <footer>
         <div class="footer-content">
-            <h4>Contact Us</h4>
-            <p>If you have any questions or need support, feel free to reach out.</p>
+            <h4>GigConnect</h4>
             <ul>
-                <li>Email: support@gigconnect.com</li>
-                <li>Phone: +91-123-456-7890</li>
+                <li><a href="#">Privacy Policy</a></li>
+                <li><a href="#">Terms of Service</a></li>
             </ul>
-        </div>
-        <div class="footer-bottom">
-            <p>© 2024 GigConnect. All rights reserved.</p>
+            <p>&copy; 2024 GigConnect. All rights reserved.</p>
         </div>
     </footer>
 
-<!-- Code injected by live-server -->
-<script src="index.js"></script>
-<script>
-	// <![CDATA[  <-- For SVG support
-	if ('WebSocket' in window) {
-		(function () {
-			function refreshCSS() {
-				var sheets = [].slice.call(document.getElementsByTagName("link"));
-				var head = document.getElementsByTagName("head")[0];
-				for (var i = 0; i < sheets.length; ++i) {
-					var elem = sheets[i];
-					var parent = elem.parentElement || head;
-					parent.removeChild(elem);
-					var rel = elem.rel;
-					if (elem.href && typeof rel != "string" || rel.length == 0 || rel.toLowerCase() == "stylesheet") {
-						var url = elem.href.replace(/(&|\?)_cacheOverride=\d+/, '');
-						elem.href = url + (url.indexOf('?') >= 0 ? '&' : '?') + '_cacheOverride=' + (new Date().valueOf());
-					}
-					parent.appendChild(elem);
-				}
-			}
-			var protocol = window.location.protocol === 'http:' ? 'ws://' : 'wss://';
-			var address = protocol + window.location.host + window.location.pathname + '/ws';
-			var socket = new WebSocket(address);
-			socket.onmessage = function (msg) {
-				if (msg.data == 'reload') window.location.reload();
-				else if (msg.data == 'refreshcss') refreshCSS();
-			};
-			if (sessionStorage && !sessionStorage.getItem('IsThisFirstTime_Log_From_LiveServer')) {
-				console.log('Live reload enabled.');
-				sessionStorage.setItem('IsThisFirstTime_Log_From_LiveServer', true);
-			}
-		})();
-	}
-	else {
-		console.error('Upgrade your browser. This Browser is NOT supported WebSocket for Live-Reloading.');
-	}
-	// ]]>
-</script>
+    <!-- Script -->
+    <script>
+        const hamburger = document.getElementById('hamburger');
+        const navLinks = document.getElementById('nav-links');
 
+        hamburger.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+        });
 
+        // Carousel functionality
+        const carousel = document.getElementById('hero-carousel');
+        const indicators = document.querySelectorAll('#carousel-indicators span');
+        const slides = document.querySelectorAll('.hero-slide');
+        const prev = document.getElementById('prev');
+        const next = document.getElementById('next');
+        let currentSlide = 0;
 
+        function updateCarousel() {
+            carousel.style.transform = `translateX(-${currentSlide * 100}%)`;
+            indicators.forEach((indicator, index) => {
+                indicator.classList.toggle('active', index === currentSlide);
+            });
+        }
 
+        next.addEventListener('click', () => {
+            currentSlide = (currentSlide + 1) % slides.length;
+            updateCarousel();
+        });
 
+        prev.addEventListener('click', () => {
+            currentSlide = (currentSlide - 1 + slides.length) % slides.length;
+            updateCarousel();
+        });
 
-
-
-
-
-
-
-
-
-
-
-
+        indicators.forEach((indicator, index) => {
+            indicator.addEventListener('click', () => {
+                currentSlide = index;
+                updateCarousel();
+            });
+        });
+    </script>
 </body>
-
-
-
-
-
-
-
-
-
-
-
 </html>
