@@ -29,18 +29,127 @@
               <li class="nav-item">
                 <a class="nav-link" href="#about">About us </a>
               </li>
-            
+              <div class="btn-group" role="group" aria-label="Basic outlined example">
+
               <li class="nav-item">
-                <a class="nav-link" href="login.html">Login </a>
+              <!-- Button trigger modal -->
+                    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal" onclick="toggle()">
+                    Login
+                    </button>
+                     
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="register.html">Register </a>
+              <!-- Button trigger modal -->
+                    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal1" onclick="toggle()">
+                   Register Now
+                    </button>
+                     
               </li>
+            </div>
             
             </ul>
           </div>
         </div>
       </nav>
+
+
+
+
+<!-- login modal -->
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h1 class="modal-title fs-5" id="exampleModalLabel">Login</h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <section id="login">
+                    <div class="form-container">
+                        <form action="login.php" method="post">
+                            <label for="email">Email:</label>
+                            <input type="email" id="email" name="email" required>
+
+                            <label for="password">Password:</label>
+                            <input type="password" id="password" name="password" required>
+
+                            <input type="submit" value="Login">
+                        </form>
+                    </div>
+                </section>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                <!-- You may not need the "Save changes" button here since the form handles submission -->
+            </div>
+        </div>
+    </div>
+</div>
+
+  
+
+<!-- login modal -->
+
+
+
+<!--register modal -->
+
+<div class="modal fade" id="exampleModal1" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h1 class="modal-title fs-5" id="exampleModalLabel">Gig Worker Registration</h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <section id="registration">
+                    <div class="form-container">
+                        <p>Please fill out the form below to register as a gig worker.</p>
+                        <form action="register.php" method="post">
+                            <label for="name">Full Name:</label>
+                            <input type="text" id="name" name="name" required>
+
+                            <label for="email">Email:</label>
+                            <input type="email" id="email" name="email" required>
+
+                            <label for="phone">Phone:</label>
+                            <input type="tel" id="phone" name="phone" required>
+
+                            <label for="location">Location:</label>
+                            <input type="text" id="location" name="location" required>
+
+                            <label for="work-preference">Work Preference:</label>
+                            <input type="text" id="work-preference" name="work_preference" required>
+
+                            <label for="skills">Current Skills:</label>
+                            <textarea id="skills" name="skills" rows="4" required></textarea>
+
+                            <label for="password">Password:</label>
+                            <input type="password" id="password" name="password" required>
+
+                            <input type="submit" value="Register">
+                        </form>
+                    </div>
+                </section>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                <!-- Removed "Save changes" button as it is not needed -->
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!-- register modal -->
+
+
+
+
+
+
 
     <section id="hero">
         <div class="hero-carousel" id="hero-carousel">
@@ -130,7 +239,8 @@
 
     <!-- Script -->
     <script>
-    
+    toggle();
+    function toggle(){
     window.addEventListener('load', function() {
         // Select the element with the class 'navbar-toggler'
         var toggler = document.getElementsByClassName('navbar-toggler')[0];
@@ -139,8 +249,7 @@
         if (toggler) {
             toggler.click();
         }
-    });
-
+    });}
         // Carousel functionality
         const carousel = document.getElementById('hero-carousel');
         const indicators = document.querySelectorAll('#carousel-indicators span');

@@ -20,7 +20,7 @@ $email = $_POST['email'];
 $password = $_POST['password'];
 
 // Prepare and bind
-$stmt = $conn->prepare("SELECT * FROM gig_workers WHERE email = ? AND password = ?");
+$stmt = $conn->prepare("SELECT id FROM gig_workers WHERE email = ? AND password = ?");
 $stmt->bind_param("ss", $email, $password);
 
 // Execute the statement
@@ -30,8 +30,12 @@ $stmt->execute();
 $result = $stmt->get_result();
 
 if ($result->num_rows > 0) {
-    // If record found, redirect to another PHP script
-    header("Location: dashboard.php");
+    // Fetch the worker ID
+    $row = $result->fetch_assoc();
+    $worker_id = $row['id'];
+    
+    // Redirect to dashboard.php with worker ID
+    header("Location: dashboard.php?id=" . urlencode($worker_id));
     exit();
 } else {
     // If record not found, show error message

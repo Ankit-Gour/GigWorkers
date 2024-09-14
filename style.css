@@ -90,6 +90,226 @@ nav ul {
     font-weight: bold;
 }
 
+
+ /* Modal Styles */
+ .modal-content {
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.modal-header {
+    border-bottom: 1px solid #e9ecef;
+    background-color: #f1f1f1;
+}
+
+.modal-title {
+    font-size: 1.25rem;
+    font-weight: 500;
+}
+
+.btn-close {
+    background: transparent;
+    border: none;
+}
+
+.btn-close::after {
+    content: '×';
+    font-size: 1.5rem;
+    color: #000;
+}
+
+.modal-body {
+    padding: 2rem;
+}
+
+.form-container {
+    max-width: 400px;
+    margin: auto;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+}
+
+label {
+    margin-bottom: 0.5rem;
+    font-weight: 600;
+}
+
+input[type="email"],
+input[type="password"] {
+    padding: 0.5rem;
+    border: 1px solid #ced4da;
+    border-radius: 4px;
+    margin-bottom: 1rem;
+}
+
+input[type="submit"] {
+    padding: 0.75rem;
+    border: none;
+    border-radius: 4px;
+    background-color: #007bff;
+    color: #fff;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+input[type="submit"]:hover {
+    background-color: #0056b3;
+}
+
+.modal-footer {
+    border-top: 1px solid #e9ecef;
+}
+
+.btn-secondary {
+    background-color: #6c757d;
+    color: #fff;
+    border: none;
+    transition: background-color 0.2s;
+}
+
+.btn-secondary:hover {
+    background-color: #5a6268;
+}
+
+
+/* register modal */
+/* Modal Styles */
+.modal-content {
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.modal-header {
+    border-bottom: 1px solid #e9ecef;
+    background-color: #f1f1f1;
+}
+
+.modal-title {
+    font-size: 1.25rem;
+    font-weight: 500;
+}
+
+.btn-close {
+    background: transparent;
+    border: none;
+}
+
+.btn-close::after {
+    content: '×';
+    font-size: 1.5rem;
+    color: #000;
+}
+
+.modal-body {
+    padding: 2rem;
+}
+
+.form-container {
+    max-width: 600px;
+    margin: auto;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+}
+
+label {
+    margin-bottom: 0.5rem;
+    font-weight: 600;
+}
+
+input[type="text"],
+input[type="email"],
+input[type="tel"],
+input[type="password"],
+textarea {
+    padding: 0.5rem;
+    border: 1px solid #ced4da;
+    border-radius: 4px;
+    margin-bottom: 1rem;
+}
+
+textarea {
+    resize: vertical;
+}
+
+input[type="submit"] {
+    padding: 0.75rem;
+    border: none;
+    border-radius: 4px;
+    background-color: #007bff;
+    color: #fff;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+input[type="submit"]:hover {
+    background-color: #0056b3;
+}
+
+.modal-footer {
+    border-top: 1px solid #e9ecef;
+}
+
+.btn-secondary {
+    background-color: #6c757d;
+    color: #fff;
+    border: none;
+    transition: background-color 0.2s;
+}
+
+.btn-secondary:hover {
+    background-color: #5a6268;
+}
+
+
+    /* Button Group Container */
+    .btn-group {
+        display: flex;
+        gap: 0.5rem; /* Space between buttons */
+    }
+
+    /* Button Styles */
+    .btn {
+        border-radius: 4px;
+        padding: 0.5rem 1rem;
+        font-size: 1rem;
+        font-weight: 500;
+        text-align: center;
+        transition: background-color 0.2s, border-color 0.2s;
+    }
+
+    .btn-primary {
+        background-color: #007bff;
+        border: 1px solid #007bff;
+        color: #fff;
+    }
+
+    .btn-primary:hover {
+        background-color: #0056b3;
+        border-color: #0056b3;
+    }
+
+    /* Remove default list styling */
+    .nav-item {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+    }
+
+    /* Align buttons vertically if needed */
+    .nav-item {
+        display: inline-block;
+    }
+
+
+
 /* Hero Section */
 #hero {
     position: relative;
@@ -300,3 +520,8 @@ footer ul li {
         grid-template-columns: repeat(4, 1fr);
     }
 }
+
+
+
+
+
