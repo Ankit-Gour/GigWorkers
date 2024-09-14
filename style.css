@@ -6,6 +6,10 @@
     --bg-overlay: rgba(0, 0, 0, 0.5);
 }
 
+/* Hides the Google Translate banner/logo */
+.goog-te-banner-frame.skiptranslate {
+    display: none !important;
+}
 body {
     margin: 0;
     font-family: Arial, sans-serif;
