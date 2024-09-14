@@ -596,3 +596,56 @@ footer ul li {
 
 
 
+#how-it-works {
+    padding: 50px 0;
+    background-color: #f9f9f9;
+    text-align: center;
+}
+
+#how-it-works h3 {
+    font-size: 28px;
+    font-weight: bold;
+    margin-bottom: 30px;
+    color: #333;
+}
+
+.steps-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+}
+
+.step-box {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease;
+}
+
+.step-box:hover {
+    transform: translateY(-10px);
+}
+
+.step-box i {
+    color: #ffcc00; /* Icon color */
+    margin-bottom: 10px;
+}
+
+.step-box h4 {
+    font-size: 20px;
+    margin-bottom: 10px;
+    color: #333;
+}
+
+.step-box p {
+    font-size: 16px;
+    color: #666;
+}
+
+/* Media query for responsive layout */
+@media (max-width: 768px) {
+    .steps-grid {
+        grid-template-columns: 1fr;
+    }
+}
