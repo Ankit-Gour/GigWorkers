@@ -131,7 +131,15 @@
     <!-- Script -->
     <script>
     
-    
+    window.addEventListener('load', function() {
+        // Select the element with the class 'navbar-toggler'
+        var toggler = document.getElementsByClassName('navbar-toggler')[0];
+        
+        // Check if the element exists before attempting to click
+        if (toggler) {
+            toggler.click();
+        }
+    });
 
         // Carousel functionality
         const carousel = document.getElementById('hero-carousel');
