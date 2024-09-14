@@ -122,18 +122,17 @@ nav ul {
 }
 
 .hero-text {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    color: var(--text-color);
-    text-align: center;
-    z-index: 10;
-    background: var(--bg-overlay);
-    padding: 1rem;
-    border-radius: 5px;
+	position: absolute;
+	top: 31%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	color: var(--text-color);
+	text-align: center;
+	z-index: 10;
+	background: var(--bg-overlay);
+	padding: 1rem;
+	border-radius: 5px;
 }
-
 .hero-text h2 {
     font-size: 2rem;
     margin-bottom: 0.5rem;
@@ -174,15 +173,14 @@ nav ul {
     border-radius: 50%;
 }
 
-/* Carousel Indicators */
 .carousel-indicators {
-    position: absolute;
-    bottom: 10px;
-    left: 50%;
-    transform: translateX(-50%);
-    display: flex;
-    gap: 0.5rem;
-    z-index: 10;
+	position: absolute;
+	bottom: 17px;
+	left: 35%;
+	transform: translateX(-50%);
+	display: flex;
+	gap: 0.5rem;
+	z-index: 10;
 }
 
 .carousel-indicators span {
