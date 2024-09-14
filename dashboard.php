@@ -117,15 +117,9 @@ $conn->close();
           <div class="navbar-collapse collapse show" id="navbarNav" style="">
             <ul class="navbar-nav">
               <li class="nav-item">
-                <a class="nav-link active" aria-current="page" href="#">Home</a>
+                <a class="nav-link active" aria-current="page" href="index.html">Home</a>
               </li>
-              <li class="nav-item">
-                <a class="nav-link" href="#features">Features</a>
-              </li>
-             
-              <li class="nav-item">
-                <a class="nav-link" href="#about">About us </a>
-              </li>
+            
             
             </ul>
           </div>
