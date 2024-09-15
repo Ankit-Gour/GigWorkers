@@ -36,6 +36,9 @@
               <li class="nav-item">
                 <a class="nav-link" href="#contact">Contact us </a>
               </li>
+              <li class="nav-item">
+                <a class="nav-link" href="fetch_worker.php">Find Worker </a>
+              </li>
               <div class="btn-group" role="group" aria-label="Basic outlined example">
 
               <li class="nav-item">
@@ -317,9 +320,12 @@
 
     <!-- Script -->
     <script>
-    toggle();
-    function toggle(){
-    window.addEventListener('load', function() {
+
+    document.addEventListener('DOMContentLoaded', function() {
+        toggle();
+    });
+
+    function toggle() {
         // Select the element with the class 'navbar-toggler'
         var toggler = document.getElementsByClassName('navbar-toggler')[0];
         
@@ -327,7 +333,9 @@
         if (toggler) {
             toggler.click();
         }
-    });}
+    }
+
+
         // Carousel functionality
         const carousel = document.getElementById('hero-carousel');
         const indicators = document.querySelectorAll('#carousel-indicators span');

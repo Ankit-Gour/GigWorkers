@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PyScript with scikit-learn and pandas</title>
+    <!-- Include PyScript -->
+    <link rel="stylesheet" href="https://pyscript.net/latest/pyscript.css" />
+    <script defer src="https://pyscript.net/latest/pyscript.js"></script>
+</head>
+<body>
+    <h1>PyScript with scikit-learn and pandas</h1>
+    
+    <!-- PyScript tag -->
+    <py-script>
+        import micropip
+        import asyncio
+
+        async def install_and_run():
+            # Install required packages
+            await micropip.install("scikit-learn")
+            await micropip.install("pandas")
+            
+            # Importing required libraries after installation
+            from sklearn.feature_extraction.text import TfidfVectorizer
+            import pandas as pd
+
+            # Sample data and function to process TF-IDF
+            responses = ["This is a sample response about masonry work",
+                         "Electrician work includes wiring and troubleshooting",
+                         "Tiling work is needed for this project"]
+            
+            vectorizer = TfidfVectorizer(stop_words='english')
+            tfidf_matrix = vectorizer.fit_transform(responses)
+            df = pd.DataFrame(tfidf_matrix.toarray(), columns=vectorizer.get_feature_names_out())
+            
+            # Display the DataFrame in the console
+            print(df)
+
+        # Ensure that the coroutine is executed properly
+        asyncio.ensure_future(install_and_run())
+    </py-script>
+</body>
+</html>
