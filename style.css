@@ -568,8 +568,13 @@ footer {
         animation: scaleDown 1s ease-in-out forwards;
        animation-delay: 0.5s; 
     }
+    .hero-slide {
+       
+        height: 137%;
+       
+    }
     .hero-text {
-        top: 50%;
+        top: 40%;
       
     }
 
