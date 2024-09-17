@@ -7,6 +7,11 @@ $username = "root";
 $password = "1913";
 $dbname = "gigconnect";
 
+// $servername = "127.0.0.1"; // 
+// $username = "u874458985_root"; 
+// $password = "GigConnect@1913"; 
+// $dbname = "u874458985_gigconnect"; 
+
 // Create connection
 $conn = new mysqli($servername, $username, $password, $dbname);
 

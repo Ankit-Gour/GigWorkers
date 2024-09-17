@@ -1,146 +1,164 @@
 <?php
-$servername = "localhost";
-$username = "root";
-$password = "1913";
-$database = "gigconnect";
-
-// Create connection
-$conn = new mysqli($servername, $username, $password, $database);
+// Connect to your database
+$conn = new mysqli('localhost', 'root', '1913', 'gigconnect'); // Update with your credentials
 
 // Check connection
 if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
 }
 
-// Get worker IDs from the form submission
-$worker_ids = $_POST['worker_ids'];
-$worker_ids_array = array_map('trim', explode(',', $worker_ids));
+// Get the skill from the query parameter
+$skill = isset($_GET['skill']) ? trim($_GET['skill']) : '';
 
-// Sanitize input to prevent SQL injection
-$worker_ids_array = array_map([$conn, 'real_escape_string'], $worker_ids_array);
-$worker_ids_list = implode(',', array_map(function($id) { return "'$id'"; }, $worker_ids_array));
+// Escape skill to prevent SQL injection
+$skill = $conn->real_escape_string($skill);
 
-// SQL query to fetch workers based on IDs
-$sql = "SELECT id, name, email, phone, location, work_preference, skills FROM gig_workers WHERE id IN ($worker_ids_list)";
+// Query to search for workers with the given skill
+$sql = "SELECT * FROM gig_workers WHERE skills LIKE '%$skill%'";
 $result = $conn->query($sql);
-?>
 
+// Check if query execution was successful
+if ($result === false) {
+    die("Error executing query: " . $conn->error);
+}
+
+// Start output buffer to handle results
+ob_start();
+
+echo '<div class="workers-container">';
+echo '<h1>Workers with Skill: ' . htmlspecialchars($skill) . '</h1>';
+
+if ($result->num_rows > 0) {
+    echo '<div class="workers-list">';
+    while ($row = $result->fetch_assoc()) {
+        echo '<div class="worker-item">';
+        echo '<h2>Worker ID: ' . htmlspecialchars($row['id']) . '</h2>';
+        echo '<p><strong>Name:</strong> ' . htmlspecialchars($row['name']) . '</p>';
+        echo '<p><strong>Skills:</strong> ' . htmlspecialchars($row['skills']) . '</p>';
+        echo '<p><strong>Location:</strong> ' . htmlspecialchars($row['location']) . '</p>';
+        echo '<p><strong>Contact:</strong> ' . htmlspecialchars($row['phone']) . '</p>';
+        echo '<p><strong>About:</strong> ' . htmlspecialchars($row['work_preference']) . '</p>';
+        echo '<div class="action-buttons">';
+        // Email button
+        echo '<a href="mailto:' . htmlspecialchars($row['email']) . '" class="btn contact-btn">Email Worker</a>';
+        // Phone button
+        echo '<a href="tel:' . htmlspecialchars($row['phone']) . '" class="btn contact-btn">Call Worker</a>';
+        echo '</div>';
+        echo '</div>';
+    }
+    echo '</div>';
+} else {
+    echo '<p class="no-results">No workers found with the skill "' . htmlspecialchars($skill) . '".</p>';
+}
+
+// Get and clean output buffer content
+$output = ob_get_clean();
+
+// Close database connection
+$conn->close();
+
+// Output the result
+echo $output;
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Workers List</title>
+    <title>Workers with Skill</title>
     <style>
         body {
-            font-family: Arial, sans-serif;
-            margin: 20px;
-            background-color: #f4f4f9;
-            color: #333;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
         }
-        table {
-            width: 100%;
-            border-collapse: collapse;
-            margin: 20px 0;
-            overflow-x: auto;
-        }
-        table, th, td {
-            border: 1px solid #ddd;
-        }
-        th, td {
-            padding: 12px;
-            text-align: left;
-        }
-        th {
-            background-color: #007BFF;
-            color: white;
-        }
-        tr:nth-child(even) {
-            background-color: #f2f2f2;
+        .workers-container {
+            max-width: 1200px;
+            margin: 50px auto;
+            padding: 20px;
+            background-color: #ffffff;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            border-radius: 10px;
         }
         h1 {
-            color: #007BFF;
-            font-size: 24px;
+            font-size: 28px;
+            color: #333;
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        .workers-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            justify-content: center;
+        }
+        .worker-item {
+            flex: 1 1 calc(33.333% - 20px);
+            background-color: #ffffff;
+            border: 1px solid #ddd;
+            border-radius: 10px;
+            padding: 20px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s, box-shadow 0.3s;
             text-align: center;
         }
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 15px;
+        .worker-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
         }
+        .worker-item h2 {
+            font-size: 22px;
+            color: #4CAF50;
+            margin-bottom: 15px;
+        }
+        .worker-item p {
+            font-size: 16px;
+            color: #555;
+            margin: 10px 0;
+        }
+        .action-buttons {
+            margin-top: 20px;
+        }
+        .btn {
+            display: inline-block;
+            padding: 10px 20px;
+            background-color: #4CAF50;
+            color: #fff;
+            border-radius: 8px;
+            text-decoration: none;
+            transition: background-color 0.3s, transform 0.3s;
+            margin: 0 5px;
+        }
+        .btn:hover {
+            background-color: #45a049;
+            transform: translateY(-3px);
+        }
+        .contact-btn {
+            background-color: #008CBA;
+        }
+        .contact-btn:hover {
+            background-color: #007bb5;
+        }
+        .no-results {
+            text-align: center;
+            font-size: 18px;
+            color: #888;
+        }
+        /* Media Queries */
         @media (max-width: 768px) {
-            table {
-                display: block;
-                width: 100%;
-                overflow-x: auto;
-                white-space: nowrap;
+            .worker-item {
+                flex: 1 1 calc(50% - 20px);
             }
-            th, td {
-                display: block;
-                text-align: right;
-                padding: 10px;
-                box-sizing: border-box;
-            }
-            th {
-                position: absolute;
-                top: -9999px;
-                left: -9999px;
-            }
-            td {
-                position: relative;
-                padding-left: 50%;
-                text-align: left;
-            }
-            td::before {
-                content: attr(data-label);
-                position: absolute;
-                left: 0;
-                width: 45%;
-                padding-left: 10px;
-                font-weight: bold;
-                white-space: nowrap;
+        }
+        @media (max-width: 480px) {
+            .worker-item {
+                flex: 1 1 100%;
             }
         }
     </style>
 </head>
 <body>
-    <div class="container">
-        <h1>Workers List</h1>
-        <table>
-            <thead>
-                <tr>
-                    <th>ID</th>
-                    <th>Name</th>
-                    <th>Email</th>
-                    <th>Phone</th>
-                    <th>Location</th>
-                    <th>Work Preference</th>
-                    <th>Skills</th>
-                </tr>
-            </thead>
-            <tbody>
-                <?php
-                if ($result->num_rows > 0) {
-                    // Output data of each row
-                    while($row = $result->fetch_assoc()) {
-                        echo "<tr>
-                                <td data-label='ID'>{$row['id']}</td>
-                                <td data-label='Name'>{$row['name']}</td>
-                                <td data-label='Email'>{$row['email']}</td>
-                                <td data-label='Phone'>{$row['phone']}</td>
-                                <td data-label='Location'>{$row['location']}</td>
-                                <td data-label='Work Preference'>{$row['work_preference']}</td>
-                                <td data-label='Skills'>{$row['skills']}</td>
-                              </tr>";
-                    }
-                } else {
-                    echo "<tr><td colspan='7'>No records found</td></tr>";
-                }
-                ?>
-            </tbody>
-        </table>
-    </div>
 
-    <?php $conn->close(); ?>
 </body>
 </html>
