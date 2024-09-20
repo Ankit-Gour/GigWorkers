@@ -60,121 +60,194 @@ $conn->close();
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
     <style>
-        /* CSS for the dashboard */
-        .dashboard-container {
-            max-width: 900px;
-            margin: 2rem auto;
-            padding: 2rem;
-            background-color: #ffffff;
-            border-radius: 8px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-            border: 1px solid #ddd;
-        }
+    /* CSS for the dashboard */
+    .dashboard-container {
+        max-width: 900px;
+        margin: 2rem auto;
+        padding: 2rem;
+        background-color: #ffffff;
+        border-radius: 8px;
+        border: 1px solid #ddd;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        animation: fadeIn 1.5s ease-in-out;
+    }
 
-        .dashboard-container h2 {
-            text-align: center;
-            font-size: 2rem;
-            color: #003366;
-            margin-bottom: 1.5rem;
-            border-bottom: 2px solid #003366;
-            padding-bottom: 0.5rem;
+    @keyframes fadeIn {
+        from {
+            opacity: 0;
+            transform: translateY(20px);
         }
-
-        .dashboard-details, .industries-list {
-            display: flex;
-            flex-direction: column;
-            gap: 1rem;
+        to {
+            opacity: 1;
+            transform: translateY(0);
         }
+    }
 
-        .detail-item, .industry-item {
-            padding: 1rem;
-            background-color: #f9f9f9;
-            border-radius: 6px;
-            border: 1px solid #ddd;
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+    .dashboard-container h2 {
+        text-align: center;
+        font-size: 2rem;
+        color: #003366;
+        margin-bottom: 1.5rem;
+        border-bottom: 2px solid #003366;
+        padding-bottom: 0.5rem;
+        animation: slideIn 1.5s ease-out;
+    }
+
+    @keyframes slideIn {
+        from {
+            transform: translateX(-100%);
         }
-
-        .detail-item span, .industry-item span {
-            font-weight: bold;
-            color: #003366;
+        to {
+            transform: translateX(0);
         }
+    }
 
-        .industry-item:nth-child(even) {
-            background-color: #f1f1f1;
+    .dashboard-details, .industries-list {
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
+    }
+
+    .detail-item, .industry-item {
+        padding: 1rem;
+        background-color: #f9f9f9;
+        border-radius: 6px;
+        border: 1px solid #ddd;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+        transition: transform 0.3s, box-shadow 0.3s;
+    }
+
+    .detail-item:hover, .industry-item:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+
+    .detail-item span, .industry-item span {
+        font-weight: bold;
+        color: #003366;
+    }
+
+    .industry-item:nth-child(even) {
+        background-color: #f1f1f1;
+    }
+
+    /* Animations for industry items */
+    .industry-item {
+        opacity: 0;
+        animation: fadeInUp 1.2s forwards;
+        animation-delay: calc(0.2s * var(--index));
+    }
+
+    @keyframes fadeInUp {
+        from {
+            opacity: 0;
+            transform: translateY(20px);
         }
-
-        /* Footer styles */
-        footer {
-            background-color: #003366;
-            color: white;
-            padding: 1.5rem 0;
-            text-align: center;
+        to {
+            opacity: 1;
+            transform: translateY(0);
         }
+    }
 
-        .footer-content {
-            max-width: 1140px;
-            margin: 0 auto;
-            padding: 0 1rem;
+    /* Footer styles */
+    footer {
+        background-color: #003366;
+        color: white;
+        padding: 1.5rem 0;
+        text-align: center;
+    }
+
+    .footer-content {
+        max-width: 1140px;
+        margin: 0 auto;
+        padding: 0 1rem;
+        animation: fadeIn 2s ease-in-out;
+    }
+
+    .footer-content h4 {
+        margin-bottom: 1rem;
+    }
+
+    .footer-content ul {
+        list-style-type: none;
+        padding: 0;
+        margin-bottom: 1rem;
+    }
+
+    .footer-content ul li {
+        display: inline;
+        margin: 0 1rem;
+    }
+
+    .footer-content a {
+        color: #66ccff;
+        text-decoration: none;
+    }
+
+    .footer-content a:hover {
+        text-decoration: underline;
+    }
+
+    .contact-btn {
+        display: inline-block;
+        margin: 0.5rem;
+        padding: 0.5rem 1rem;
+        background-color: #66ccff;
+        color: #003366;
+        border: none;
+        border-radius: 4px;
+        font-size: 1rem;
+        cursor: pointer;
+        text-decoration: none;
+        transition: background-color 0.3s;
+    }
+
+    .contact-btn:hover {
+        background-color: #3399ff;
+    }
+
+    /* Button animation */
+    .contact-btn {
+        animation: pulse 1.5s infinite;
+    }
+
+    @keyframes pulse {
+        0% {
+            transform: scale(1);
         }
-
-        .footer-content h4 {
-            margin-bottom: 1rem;
+        50% {
+            transform: scale(1.05);
         }
+        100% {
+            transform: scale(1);
+        }
+    }
 
+    /* Responsive adjustments */
+    @media (max-width: 768px) {
         .footer-content ul {
-            list-style-type: none;
-            padding: 0;
             margin-bottom: 1rem;
         }
 
         .footer-content ul li {
-            display: inline;
-            margin: 0 1rem;
-        }
-
-        .footer-content a {
-            color: #66ccff;
-            text-decoration: none;
-        }
-
-        .footer-content a:hover {
-            text-decoration: underline;
+            display: block;
+            margin: 0.5rem 0;
         }
 
         .contact-btn {
-            display: inline-block;
-            margin: 0.5rem;
-            padding: 0.5rem 1rem;
-            background-color: #66ccff;
-            color: #003366;
-            border: none;
-            border-radius: 4px;
-            font-size: 1rem;
-            cursor: pointer;
-            text-decoration: none;
+            display: block;
+            margin: 0.5rem auto;
         }
+    }
 
-        .contact-btn:hover {
-            background-color: #3399ff;
-        }
+    .dashboard-details, .industries-list {
+	display: flex;
+	flex-direction: column;
+	gap: 1rem;
+	margin-bottom: 23px;
+}
+</style>
 
-        /* Responsive adjustments */
-        @media (max-width: 768px) {
-            .footer-content ul {
-                margin-bottom: 1rem;
-            }
-
-            .footer-content ul li {
-                display: block;
-                margin: 0.5rem 0;
-            }
-
-            .contact-btn {
-                display: block;
-                margin: 0.5rem auto;
-            }
-        }
-    </style>
 </head>
 <body>
 
