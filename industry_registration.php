@@ -37,7 +37,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $work_type = $conn->real_escape_string($_POST['work_type']);
     $skills = $conn->real_escape_string($_POST['skills']);
     $contact_email = $conn->real_escape_string($_POST['contact_email']);
-    $contact_phone = $conn->real_escape_string($_POST['contact_phone']);
+    $contact_phone = $conn->real_escape_string($_POST['contact_phone']); // Updated here
 
     // Validate email format
     if (!filter_var($contact_email, FILTER_VALIDATE_EMAIL)) {
@@ -54,6 +54,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         }
     }
 }
+
 
 // Fetch all registered industries
 $sql = "SELECT * FROM industry";
