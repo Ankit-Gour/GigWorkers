@@ -17,10 +17,23 @@ if ($conn->connect_error) {
 $name = $_POST['name'];
 $email = $_POST['email'];
 $phone = $_POST['phone'];
-$location = $_POST['location'];
+$pincode = $_POST['pincode']; // Assuming you have a pincode field
 $work_preference = $_POST['work_preference'];
 $skills = $_POST['skills'];
 $password = $_POST['password']; 
+
+// Fetch location data from the API
+$apiUrl = "https://api.postalpincode.in/pincode/" . $pincode;
+$response = file_get_contents($apiUrl);
+$responseData = json_decode($response, true);
+
+// Check if the response is valid and has data
+if (isset($responseData[0]['PostOffice'][0])) {
+    $postOffice = $responseData[0]['PostOffice'][0];
+    $location = $postOffice['District'] . ", " . $postOffice['State'];
+} else {
+    $location = "Unknown"; // Handle unknown pincode case
+}
 
 // Prepare and bind
 $stmt = $conn->prepare("INSERT INTO gig_workers (name, email, phone, location, work_preference, skills, password) VALUES (?, ?, ?, ?, ?, ?, ?)");
@@ -70,8 +83,7 @@ if ($stmt->execute()) {
                 text-decoration: underline;
             }
         </style>
-        <!-- Meta tag for redirection -->
-        <meta http-equiv='refresh' content='1;url=index.html'>
+        <meta http-equiv='refresh' content='5;url=index.html'>
     </head>
     <body>
         <div class='success-message'>
@@ -79,13 +91,6 @@ if ($stmt->execute()) {
             You will be redirected to home page shortly.<br>
             Please Login from there 
         </div>
-
-        <!-- JavaScript for redirection -->
-        <script>
-            setTimeout(function() {
-                window.location.href = 'index.html'; // Redirect after 1 second
-            }, 6000); // 1000 milliseconds = 1 second
-        </script>
     </body>
     </html>";
 } else {

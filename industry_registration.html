@@ -126,8 +126,8 @@
 <body>
 
 
-      <!-- Navigation Bar -->
-      <nav class="navbar navbar-expand-lg bg-body-tertiary">
+    <!-- Navigation Bar -->
+    <nav class="navbar navbar-expand-lg bg-body-tertiary">
         <div class="container-fluid">
         <div id="logo" ><img src="images/logo.png" alt="GigConnect"></div>
           <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="true" aria-label="Toggle navigation">
@@ -138,7 +138,8 @@
               <li class="nav-item">
                 <a class="nav-link active" aria-current="page" href="index.html">Home</a>
               </li>
-
+             
+    
 
               <li class="nav-item">
                 <a class="nav-link" href="#contact">Contact us </a>
@@ -149,27 +150,29 @@
                     
               </li>
               <div class="btn-group" role="group" aria-label="Basic outlined example">
-                <a href="fetch_worker.php"> <button type="button" class="btn btn-primary" >
-                    Find Worker
-                    </button></a>
-              <li class="nav-item">
-              <!-- Button trigger modal -->
-                    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal" onclick="toggle()">
-                   Gig Worker Login
+                <a href="fetch_worker.php"> 
+                    <button type="button" class="btn btn-primary custom-btn">
+                        Find Worker
                     </button>
-                     
-              </li>
-              <li class="nav-item">
-              <!-- Button trigger modal -->
-                    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal1" onclick="toggle()">
-                   Worker Registration
+                </a>
+            
+                <li class="nav-item">
+                    <!-- Button trigger modal -->
+                    <button type="button" class="btn btn-primary custom-btn" data-bs-toggle="modal" data-bs-target="#exampleModal" onclick="toggle()">
+                        Gig Worker Login
                     </button>
-                     
-              </li>
-
-              <li class="nav-item">
-                <a class="btn btn-primary" href="industry_registration.html">Industry Registration</a>
-            </li>
+                </li>
+            
+                <li class="nav-item">
+                    <!-- Button trigger modal -->
+                    <button type="button" class="btn btn-primary custom-btn" data-bs-toggle="modal" data-bs-target="#exampleModal1" onclick="toggle()">
+                        Worker Registration
+                    </button>
+                </li>
+            
+                <li class="nav-item">
+                    <a class="btn btn-primary custom-btn" href="industry_registration.html">Industry Registration</a>
+                </li>
             </div>
             
             
@@ -289,8 +292,8 @@
         </form>
     </div>
 
-   <!-- Footer -->
-   <footer>
+  <!-- Footer -->
+  <footer>
     <div class="footer-content" >
         <div id="logo" class="footer-logo" ><img src="images/logo.png" alt="GigConnect"></div>
         <ul>
@@ -301,7 +304,7 @@
             <li><a href="tel:+919399484597">+91 9399484597</a></li> <!-- Phone Number -->
         </ul>
         <div class="footer-social">
-            <a href="https://www.linkedin.com/company/gigconnect-findyourfit" target="_blank">LinkedIn</a>
+            <a href="https://www.linkedin.com/company/gigconnect-findyourfit" target="_blank"><img src="images/linkedin.png"></a>
         </div>
         <p >© 2024 GigConnect. All rights reserved.</p>
     </div>
@@ -319,7 +322,6 @@ new google.translate.TranslateElement({pageLanguage: 'en'}, 'google_translate_el
 <script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
 
 </footer>
-
     <!-- Scripts -->
     <script>
         document.addEventListener('DOMContentLoaded', function() {
