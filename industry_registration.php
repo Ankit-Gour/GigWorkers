@@ -21,7 +21,8 @@ $sql = "CREATE TABLE IF NOT EXISTS industry (
     domain VARCHAR(255) NOT NULL,
     work_type VARCHAR(255) NOT NULL,
     skills TEXT NOT NULL,
-    contact_details TEXT NOT NULL,
+    contact_email VARCHAR(255) NULL,
+    contact_phone VARCHAR(20) NULL,
     reg_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
 )";
 
@@ -35,13 +36,23 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $domain = $conn->real_escape_string($_POST['domain']);
     $work_type = $conn->real_escape_string($_POST['work_type']);
     $skills = $conn->real_escape_string($_POST['skills']);
-    $contact_details = $conn->real_escape_string($_POST['contact_details']);
+    $contact_email = $conn->real_escape_string($_POST['contact_email']);
+    $contact_phone = $conn->real_escape_string($_POST['contact_phone']);
 
-    // SQL query to insert form data into the 'industry' table
-    $sql = "INSERT INTO industry (industry_name, location, domain, work_type, skills, contact_details)
-            VALUES ('$industry_name', '$location', '$domain', '$work_type', '$skills', '$contact_details')";
+    // Validate email format
+    if (!filter_var($contact_email, FILTER_VALIDATE_EMAIL)) {
+        echo "<script>alert('Invalid email format');</script>";
+    } else {
+        // SQL query to insert form data into the 'industry' table
+        $sql = "INSERT INTO industry (industry_name, location, domain, work_type, skills, contact_email, contact_phone)
+                VALUES ('$industry_name', '$location', '$domain', '$work_type', '$skills', '$contact_email', '$contact_phone')";
 
-    $conn->query($sql);
+        if ($conn->query($sql) === TRUE) {
+            echo "<script>alert('New industry registered successfully');</script>";
+        } else {
+            echo "<script>alert('Error: " . $sql . "\\n" . $conn->error . "');</script>";
+        }
+    }
 }
 
 // Fetch all registered industries
@@ -115,14 +126,16 @@ $result = $conn->query($sql);
             <div class="card">
                 <div class="card-header">Industry ID: <?= $row['id'] ?></div>
                 <div class="card-content">
-                    <strong>Industry Name:</strong> <?= $row['industry_name'] ?><br>
-                    <strong>Location:</strong> <?= $row['location'] ?><br>
-                    <strong>Domain:</strong> <?= $row['domain'] ?><br>
-                    <strong>Type of Work:</strong> <?= $row['work_type'] ?><br>
-                    <strong>Skills:</strong> <?= $row['skills'] ?><br>
-                    <strong>Contact Details:</strong> <?= $row['contact_details'] ?><br>
-                    <strong>Registration Date:</strong> <?= $row['reg_date'] ?><br>
-                </div>
+    <strong>Industry Name:</strong> <?= htmlspecialchars($row['industry_name']) ?><br>
+    <strong>Location:</strong> <?= htmlspecialchars($row['location']) ?><br>
+    <strong>Domain:</strong> <?= htmlspecialchars($row['domain']) ?><br>
+    <strong>Type of Work:</strong> <?= htmlspecialchars($row['work_type']) ?><br>
+    <strong>Skills:</strong> <?= htmlspecialchars($row['skills']) ?><br>
+    <strong>Contact Email:</strong> <?= htmlspecialchars($row['contact_email']) ?><br>
+    <strong>Contact Phone:</strong> <?= !empty($row['contact_phone']) ? htmlspecialchars($row['contact_phone']) : 'Not provided' ?><br>
+    <strong>Registration Date:</strong> <?= htmlspecialchars($row['reg_date']) ?><br>
+</div>
+
             </div>
         <?php endwhile; ?>
     <?php else: ?>

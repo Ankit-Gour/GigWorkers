@@ -16,8 +16,43 @@ body {
     line-height: 1.6;
     background-color: #f4f4f4 !important;
 }
+
+
+#logo img {
+	vertical-align: middle;
+	width: 154px;
+	border-radius: 4px;
+	height: auto;
+}
+/* Media query for responsive layout */
+@media (max-width: 1099px) {
+   #logo{
+    /* background: red; */
+   width: 100vw;
+   display: flex;
+   justify-content: center;
+   margin-top: 5px;
+   margin-bottom: 5px;
+   }
+   #logo img{
+   width:150px
+
+   }
+}
+@media (max-width:1099px) {
+   #logo{
+background: red;
+   width: 10vw;
+   display: flex;
+   justify-content: center;
+   display: inline;
+   }
+   
+}
+
+
 .navbar {
-	--bs-navbar-padding-x: 0;
+	--bs-navbar-padding-x: 0px;
 	--bs-navbar-padding-y: 0.5rem;
 	--bs-navbar-color: white;
 	--bs-navbar-hover-color: white;
@@ -27,7 +62,8 @@ body {
 	--bs-navbar-brand-margin-end: 1rem;
 	--bs-navbar-brand-font-size: 1.25rem;
 	--bs-navbar-brand-color:  white;
-	/* --bs-navbar-brand-hover-color:  white; */
+    /* font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif; */
+	/* --bs-navbar-brand-hover-color:  rgb(146, 4, 4); */
 	--bs-navbar-nav-link-padding-x: 0.5rem;
 	--bs-navbar-toggler-padding-y: 0.25rem;
 	--bs-navbar-toggler-padding-x: 0.75rem;
@@ -43,7 +79,11 @@ body {
 	align-items: center;
 	justify-content: space-between;
 	padding: var(--bs-navbar-padding-y) var(--bs-navbar-padding-x);
+ 
+
 }
+
+
 
 /* Mobile First - Navigation */
 header {
@@ -79,7 +119,13 @@ nav ul {
     font-size: 1.5rem;
     color: var(--secondary-color);
     cursor: pointer;
+    transition: transform 0.3s ease; /* Added transition */
 }
+
+.hamburger.active {
+    transform: rotate(90deg); /* Rotate when active */
+}
+
 
 .nav-links {
     display: flex;
@@ -92,6 +138,12 @@ nav ul {
     color: var(--text-color);
     text-decoration: none;
     font-weight: bold;
+    transition: color 0.3s ease, transform 0.3s ease; /* Added transition */
+}
+
+.nav-links a:hover {
+    color: var(--secondary-color); /* Change color on hover */
+    transform: translateY(-2px); /* Slight lift effect */
 }
 
 
@@ -303,6 +355,8 @@ input[type="submit"]:hover {
     .btn-group {
         display: flex;
         gap: 0.5rem; /* Space between buttons */
+        flex-wrap: wrap;
+        
     }
 
     /* Button Styles */
@@ -313,7 +367,12 @@ input[type="submit"]:hover {
         font-weight: 500;
         text-align: center;
         transition: background-color 0.2s, border-color 0.2s;
+        
+     
     }
+    @media (max-width: 768px) {
+      .btn{ width: 190px;
+        }}
 
     .btn-primary {
         background-color: #007bff;
@@ -372,6 +431,13 @@ input[type="submit"]:hover {
     
 }
 
+.register {
+    
+    min-width:300px;
+    max-width:400px;
+    height: 50px;
+    
+}
 
 
 .hero-text {
@@ -550,7 +616,10 @@ footer {
     text-decoration: none;
     font-size: 18px;
 }
+.footer-logo img{
 
+    margin-bottom: 20px;
+  }
 .footer-social a:hover {
     color: #ffcc00; /* Hover color for social icons */
 }
@@ -579,7 +648,9 @@ footer {
         display: block;
         margin: 10px 0;
     }
+   
 }
+
 
 /* Media query for responsiveness  for mobile*/
 @media (max-width: 400px) {
@@ -764,4 +835,26 @@ footer ul li {
 	width: 40px;
 	height: 35px;
 	margin-bottom: 27px;
+}
+
+
+@keyframes slideDown {
+    from {
+        max-height: 0;
+        opacity: 0;
+    }
+    to {
+        max-height: 200px; /* Adjust based on your menu height */
+        opacity: 1;
+    }
+}
+
+.nav-links {
+    display: none; /* Initially hidden */
+    overflow: hidden; /* Hide overflow for the animation */
+    animation: slideDown 0.3s ease forwards; /* Animation on open */
+}
+
+.nav-links.show {
+    display: flex; /* Change display to flex when shown */
 }
