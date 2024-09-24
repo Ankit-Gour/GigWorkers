@@ -1,7 +1,7 @@
 <html lang="en"><head></head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>GigConnect - Gig Worker Support Platform</title>
+    <title>GigConnect - Find Your Fit</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
@@ -13,66 +13,40 @@
     <!-- Navigation Bar -->
     <nav class="navbar navbar-expand-lg bg-body-tertiary">
         <div class="container-fluid">
-        <div id="logo" ><img src="images/logo.png" alt="GigConnect"></div>
-          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="true" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-          </button>
-          <div class="navbar-collapse collapse show" id="navbarNav" >
-            <ul class="navbar-nav">
-              <li class="nav-item">
-                <a class="nav-link active" aria-current="page" href="index.html">Home</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="#features">Features</a>
-              </li>
-             
-              <!-- <li class="nav-item">
-                <a class="nav-link" href="#about">About us </a>
-              </li> -->
-              <li class="nav-item">
-                <a class="nav-link" href="#how-it-works">How it works </a>
-              </li>
-
-              <li class="nav-item">
-                <a class="nav-link" href="#contact">Contact us </a>
-              </li>
-              <li class="nav-item">
-              
-            
-                    
-              </li>
-              <div class="btn-group" role="group" aria-label="Basic outlined example">
-                <a href="fetch_worker.php"> 
-                    <button type="button" class="btn btn-primary custom-btn">
-                        Find Worker
-                    </button>
-                </a>
-            
-                <li class="nav-item">
-                    <!-- Button trigger modal -->
-                    <button type="button" class="btn btn-primary custom-btn" data-bs-toggle="modal" data-bs-target="#exampleModal" onclick="toggle()">
-                        Gig Worker Login
-                    </button>
-                </li>
-            
-                <li class="nav-item">
-                    <!-- Button trigger modal -->
-                    <button type="button" class="btn btn-primary custom-btn" data-bs-toggle="modal" data-bs-target="#exampleModal1" onclick="toggle()">
-                        Worker Registration
-                    </button>
-                </li>
-            
-                <li class="nav-item">
-                    <a class="btn btn-primary custom-btn" href="industry_registration.html">Industry Registration</a>
-                </li>
+            <div id="logo"><a href="index.html"><img src="images/logo.png" alt="GigConnect"></a></div>
+            <button class="navbar-toggler" id="hammer" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                aria-controls="navbarNav" aria-expanded="true" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="navbar-collapse collapse show" id="navbarNav">
+                <div class="othernavbutton">
+                    <ul class="navbar-nav">
+                        <li class="nav-item special">
+                            <a class="nav-link active animated-link" aria-current="page" href="index.html">Home</a>
+                        </li>
+                        <li class="nav-item special">
+                            <a class="nav-link animated-link" href="#features">Features</a>
+                        </li>
+                        <li class="nav-item special">
+                            <a class="nav-link animated-link" href="#how-it-works">How it works</a>
+                        </li>
+                        <li class="nav-item special">
+                            <a class="nav-link animated-link" href="#contact">Contact us</a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="btn-group" role="group" aria-label="Basic outlined example">
+                    <a href="fetch_worker.php">
+                        <button type="button" class="btn btn-primary custom-btn">Find Worker</button>
+                    </a>
+                    <button type="button"  class="btn btn-primary custom-btn" data-bs-toggle="modal" data-bs-target="#exampleModal" onclick="toggle()" id="gigloginaction">Gig Worker Login</button>
+                    <button type="button" id="gig" class="btn btn-primary custom-btn" data-bs-toggle="modal" data-bs-target="#exampleModal1" onclick="toggle()">Worker Registration</button>
+                    <a class="btn btn-primary custom-btn" href="industry_registration.html" id="industry">Industry Registration</a>
+                </div>
             </div>
-            
-            
-            </ul>
-          </div>
         </div>
-      </nav>
-
+    </nav>
+    
 
 
 
@@ -98,20 +72,46 @@
 
                             <input type="submit" value="Login">
                         </form>
+                        <!-- Forgot Password Button -->
+                        <div class="forgot-password">
+                            <button type="button" class="btn btn-link forgot-password-btn" data-bs-toggle="modal" data-bs-target="#forgotPasswordModal">Forgot Password?</button>
+                        </div>
                     </div>
                 </section>
             </div>
             <div class="modal-footer">
-
-
                 <button type="button" class="btn btn-secondary custom-btn" data-bs-dismiss="modal">Close</button>
-
-
-                <!-- You may not need the "Save changes" button here since the form handles submission -->
             </div>
         </div>
     </div>
 </div>
+
+<!-- Forgot Password Modal -->
+<div class="modal fade" id="forgotPasswordModal" tabindex="-1" aria-labelledby="forgotPasswordLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h1 class="modal-title fs-5" id="forgotPasswordLabel">Forgot Password</h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <form action="forgot_password.php" method="post">
+                    <label for="forgot-email">Email:</label>
+                    <input type="email" id="forgot-email" name="email" required>
+
+                    <label for="forgot-phone">Mobile Number:</label>
+                    <input type="text" id="forgot-phone" name="phone" required>
+
+                    <input type="submit" value="Reset Password">
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary custom-btn" data-bs-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+
 
   
 
@@ -190,53 +190,52 @@
 
 
 
-    <section id="hero">
-        <div class="hero-carousel" id="hero-carousel">
-            <div class="hero-slide">
-                <img src="images/i1.jpg" alt="Gig Workers Image">
-                <div class="hero-text">
-                    <h2>Empowering Gig Workers in Bundelkhand</h2>
-                    <h2>बुंदेलखंड में स्वतंत्र श्रमिकों का सशक्तिकरण</h2>
-                    <!-- <p>Find local job opportunities, improve your skills, and connect with industries through our AI-powered platform.</p> -->
-                    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal1" onclick="toggle()">
-                        Register Now
-                         </button>
-                </div>
-            </div>
-            <div class="hero-slide">
-                <img src="images/i2.jpg" alt="Another Gig Workers Image">
-                <div class="hero-text">
-                    <h2>Upskill for Better Opportunities</h2>
-                    <p>Take advantage of our skill recommendations and get hired for high-demand jobs.</p>
-                    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal1" onclick="toggle()">
-                        Register Now
-                         </button>
-                </div>
-            </div>
-            <div class="hero-slide">
-                <img src="images/i3.jpg" alt="Another Gig Workers Image">
-                <div class="hero-text">
-                    <h2>Connecting You with the Right Industry</h2>
-                    <p>Find the best match for your skills and get job alerts right to your inbox.</p>
-                    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal1" onclick="toggle()">
-                        Register Now
-                         </button>
-                </div>
+<section id="hero">
+    <div class="hero-carousel" id="hero-carousel">
+        <div class="hero-slide active">
+            <img src="images/i3.jpg" alt="Gig Workers Image">
+            <div class="hero-text">
+                <h2>Empowering Gig Workers in Bundelkhand</h2>
+                <h2>बुंदेलखंड में स्वतंत्र श्रमिकों का सशक्तिकरण</h2>
+                <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal1" onclick="toggle()">
+                    Register Now
+                </button>
             </div>
         </div>
-        <!-- Carousel Controls -->
-        <div class="carousel-controls">
-            <i class="fas fa-chevron-left" id="prev"></i>
-            <i class="fas fa-chevron-right" id="next"></i>
+        <div class="hero-slide">
+            <img src="images/i2.jpg" alt="Another Gig Workers Image">
+            <div class="hero-text">
+                <h2>Upskill for Better Opportunities</h2>
+                <p>Take advantage of our skill recommendations and get hired for high-demand jobs.</p>
+                <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal1" onclick="toggle()">
+                    Register Now
+                </button>
+            </div>
         </div>
-        <!-- Carousel Indicators -->
-        <div class="carousel-indicators" id="carousel-indicators">
-            <span class="active" data-slide="0"></span>
-            <span data-slide="1"></span>
-            <span data-slide="2"></span>
+        <div class="hero-slide">
+            <img src="images/i1.jpg" alt="Another Gig Workers Image">
+            <div class="hero-text">
+                <h2>Connecting You with the Right Industry</h2>
+                <p>Find the best match for your skills and get job alerts right to your inbox.</p>
+                <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal1" onclick="toggle()">
+                    Register Now
+                </button>
+            </div>
         </div>
-    </section><!-- Hero Section (Carousel) -->
-    
+    </div>
+    <!-- Carousel Controls -->
+    <div class="carousel-controls">
+        <i class="fas fa-chevron-left" id="prev"></i>
+        <i class="fas fa-chevron-right" id="next"></i>
+    </div>
+    <!-- Carousel Indicators -->
+    <div class="carousel-indicators" id="carousel-indicators">
+        <span class="active" data-slide="0"></span>
+        <span data-slide="1"></span>
+        <span data-slide="2"></span>
+    </div>
+</section>
+
 
     <!-- About Section -->
     <section id="about">
@@ -287,38 +286,68 @@
 
 
     <!-- Features Section -->
-    <section id="features">
-        <h3>Platform Features</h3>
-        <div class="features-grid">
-            <div class="feature-box animated-box">
-                <img class="features-logo" src="images/job-matching.png" alt="Job Matching">
-                <h4>Job Matching</h4>
-                <p>Find jobs based on your skills and location.</p>
-            </div>
-            <div class="feature-box animated-box">
-                <img class="features-logo" src="images/skills.png" alt="Skill Development">
-                <h4>Skill Development</h4>
-                <p>Get recommendations for new skills to increase job opportunities.</p>
-            </div>
-            <div class="feature-box animated-box">
-                <img class="features-logo" src="images/whatsapp.png" alt="Alerts & Notifications">
-                <h4>Alerts &amp; Notifications</h4>
-                <p>Receive instant job alerts in your WhatsApp.</p>
-            </div>
-            <div class="feature-box animated-box">
-                <img class="features-logo" src="images/solidarity.png" alt="Community Support">
-                <h4>Community Support</h4>
-                <p>Connect with other gig workers and share opportunities.</p>
-            </div>
+ <section id="features">
+    <h3>Platform Features</h3>
+    <div class="features-grid">
+        <div class="feature-box animated-box">
+            <img class="features-logo" src="images/job-matching.png" alt="Job Matching">
+            <h4>Job Matching</h4>
+            <p>Find jobs based on your skills and location.</p>
         </div>
-    </section>
-    
+        <div class="feature-box animated-box">
+            <img class="features-logo" src="images/skills.png" alt="Skill Development">
+            <h4>Skill Development</h4>
+            <p>Get recommendations for new skills to increase job opportunities.</p>
+        </div>
+        <div class="feature-box animated-box">
+            <img class="features-logo" src="images/whatsapp.png" alt="Alerts & Notifications">
+            <h4>Alerts &amp; Notifications</h4>
+            <p>Receive instant job alerts in your WhatsApp.</p>
+        </div>
+        <div class="feature-box animated-box">
+            <img class="features-logo" src="images/solidarity.png" alt="Community Support">
+            <h4>Community Support</h4>
+            <p>Connect with other gig workers and share opportunities.</p>
+        </div>
+    </div>
+</section>
+
+
+
+<!-- registration -->
+<section class="registration-section">
+    <div class="registration-content">
+        <h1>Join GigConnect Today!</h1>
+        <p class="catchy-line">"Empowering gig workers, connecting opportunities."</p>
+        <p>Looking to hire the best talent or ready to showcase your skills? <strong>Register now</strong> to be part of the revolution!</p>
+        <div class="button-container">
+            <button class="register-btn" onclick="registerAsGigWorker()">Register as Gig Worker</button>
+            <button class="register-btn"  onclick="registerAsIndustry()">Register as Industry</button>
+        </div>
+    </div>
+</section>
+
+
+<!-- login section  -->
+
+<!-- Centered Login Section -->
+<section class="login-center-section">
+    <div class="content-wrapper">
+        <h2>Ready to Access Your Opportunities?</h2>
+        <p>Log in now to explore gigs tailored just for you!</p>
+        <button class="login-btn" onclick="openLoginModal()">Login as Gig Worker</button>
+    </div>
+</section>
+
+
+
 
     <!-- Footer -->
     <footer>
         <div class="footer-content" >
             <div id="logo" class="footer-logo" ><img src="images/logo.png" alt="GigConnect"></div>
             <ul>
+                <li><a href="https://www.freejobalert.com/mp-government-jobs/" target="_blank">Jobs Information</a></li>
                 <li><a href="#">Privacy Policy</a></li>
                 <li><a href="#">Terms of Service</a></li>
                 <li><a href="mailto:ankitgour19168893@gmail.com">Contact Us</a></li> <!-- Email Link -->
@@ -347,80 +376,7 @@
     
 
     <!-- Script -->
-    <script>
-
-    document.addEventListener('DOMContentLoaded', function() {
-        toggle();
-    });
-
-    function toggle() {
-        // Select the element with the class 'navbar-toggler'
-        var toggler = document.getElementsByClassName('navbar-toggler')[0];
-        
-        // Check if the element exists before attempting to click
-        if (toggler) {
-            toggler.click();
-        }
-    }
-
-
-        // Carousel functionality
-        const carousel = document.getElementById('hero-carousel');
-        const indicators = document.querySelectorAll('#carousel-indicators span');
-        const slides = document.querySelectorAll('.hero-slide');
-        const prev = document.getElementById('prev');
-        const next = document.getElementById('next');
-        let currentSlide = 0;
-
-        function updateCarousel() {
-            carousel.style.transform = `translateX(-${currentSlide * 100}%)`;
-            indicators.forEach((indicator, index) => {
-                indicator.classList.toggle('active', index === currentSlide);
-            });
-        }
-
-        next.addEventListener('click', () => {
-            currentSlide = (currentSlide + 1) % slides.length;
-            updateCarousel();
-        });
-
-        prev.addEventListener('click', () => {
-            currentSlide = (currentSlide - 1 + slides.length) % slides.length;
-            updateCarousel();
-        });
-
-        indicators.forEach((indicator, index) => {
-            indicator.addEventListener('click', () => {
-                currentSlide = index;
-                updateCarousel();
-            });
-        });
-
-
-        const hamburger = document.querySelector('.hamburger');
-const navLinks = document.querySelector('.nav-links');
-
-hamburger.addEventListener('click', () => {
-    navLinks.classList.toggle('show');
-    hamburger.classList.toggle('active');
-});
-
-
-
-// Detect when the feature boxes come into view and add animation class
-window.addEventListener('scroll', function() {
-    const elements = document.querySelectorAll('.animated-box');
-    const scrollTop = window.scrollY + window.innerHeight;
-
-    elements.forEach(function(element) {
-        if (element.offsetTop < scrollTop) {
-            element.classList.add('visible');
-        }
-    });
-});
-
-
-    </script>
+    
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
 <!-- Code injected by live-server -->
 <script>
@@ -461,5 +417,5 @@ window.addEventListener('scroll', function() {
 	// ]]>
 </script>
 
-
+<script src="index.js"></script>
 </body></html>
